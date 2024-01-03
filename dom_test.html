@@ -1,4 +1,4 @@
-<body>
+<!-- <body>
     <p>A paragraph</p>
     <div>A div</div>
   
@@ -7,4 +7,70 @@
       document.body.innerHTML = 'The new BODY!'; // replace it
     </script>
   
-  </body>
+  </body> -->
+  <!DOCTYPE HTML>
+<html>
+
+<body>
+
+  <ul id="tree">
+    <li>Animals
+      <ul>
+        <li>Mammals
+          <ul>
+            <li>Cows</li>
+            <li>Donkeys</li>
+            <li>Dogs</li>
+            <li>Tigers</li>
+          </ul>
+        </li>
+        <li>Other
+          <ul>
+            <li>Snakes</li>
+            <li>Birds</li>
+            <li>Lizards</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Fishes
+      <ul>
+        <li>Aquarium
+          <ul>
+            <li>Guppy</li>
+            <li>Angelfish</li>
+          </ul>
+        </li>
+        <li>Sea
+          <ul>
+            <li>Sea trout</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <script>
+    function displayLiInfo(liElement) {
+      // Display the text content of the current li element
+      console.log("Text inside: " + liElement.firstChild.textContent.trim());
+
+      // Count the nested li elements (including descendants)
+      var nestedLiCount = liElement.getElementsByTagName('li').length;
+      console.log("Number of nested <li>: " + nestedLiCount);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // Get all li elements
+      var liElements = document.querySelectorAll('#tree li');
+
+      // Iterate through each li element and display information
+      liElements.forEach(function (liElement) {
+        displayLiInfo(liElement);
+      });
+    });
+  </script>
+
+</body>
+
+</html>
