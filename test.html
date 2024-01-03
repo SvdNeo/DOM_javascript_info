@@ -3,29 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dynamic Script Loading</title>
+  <title>Paint Diagonal Cells</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    td {
+      border: 1px solid black;
+      padding: 10px;
+    }
+  </style>
 </head>
 <body>
 
+  <table id="myTable">
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </table>
+
   <script>
-    // Function to dynamically load a script
-    function loadScript(src, callback) {
-      var script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = "test.js";
-
-      // Set up a callback function to execute after the script loads
-      script.onload = callback;
-
-      // Append the script element to the document body
-      document.body.appendChild(script);
-    }
-
-    // Usage: Load "Dom_prop.js" dynamically
-    loadScript('Dom_prop.js', function() {
-      // The script has loaded, you can now use its functionalities
-      console.log('Script loaded!');
-      // You can call functions or perform other operations from "Dom_prop.js" here
+    document.addEventListener("DOMContentLoaded", function() {
+      var table = document.getElementById("myTable");
+      var rows = table.rows;
+console.log(rows)
+      for (var i = 0; i < rows.length; i++) {
+        var cells = rows[i].cells;
+        console.log(cells)
+        if (i < cells.length) {
+          var diagonalCell = cells[i];
+          console.log(diagonalCell)
+          diagonalCell.style.backgroundColor = 'red';
+        }
+      }
     });
   </script>
 
