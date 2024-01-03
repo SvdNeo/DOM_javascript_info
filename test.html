@@ -54,7 +54,7 @@ console.log(rows)
 
 </body>
 </html> -->
-<div id="elem">
+<!-- <div id="elem">
     <div id="elem-content">Element</div>
   </div>
   
@@ -64,4 +64,93 @@ console.log(rows)
   
     // id="elem-content" has a hyphen inside, so it can't be a variable name
     // ...but we can access it using square brackets: window['elem-content']
+  </script> -->
+  <!-- <ul>
+    <li>The</li>
+    <li>test</li>
+  </ul>
+  <ul>
+    <li>has</li>
+    <li>passed</li>
+  </ul>
+  <script>
+    let elements = document.querySelectorAll('ul > li');
+  
+    for (let elem of elements) {
+      alert(elem.innerHTML); // "test", "passed"
+    }
+  </script> -->
+  <html>
+<body>
+  <form name="search">
+    <label>Search the site:
+      <input type="text" name="search">
+    </label>
+    <input type="submit" value="Search!">
+  </form>
+
+  <hr>
+
+  <form name="search-person">
+    Search the visitors:
+    <table id="age-table">
+      <tr>
+        <td>Age:</td>
+        <td id="age-list">
+          <label>
+            <input type="radio" name="age" value="young">less than 18</label>
+          <label>
+            <input type="radio" name="age" value="mature">18-50</label>
+          <label>
+            <input type="radio" name="age" value="senior">more than 50</label>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Additionally:</td>
+        <td>
+          <input type="text" name="info[0]">
+          <input type="text" name="info[1]">
+          <input type="text" name="info[2]">
+        </td>
+      </tr>
+
+    </table>
+
+    <input type="submit" value="Search!">
+  </form>
+  <script>
+    // 1. The table with `id="age-table"`.
+let table = document.getElementById('age-table')
+console.log(table)
+
+// 2. All label elements inside that table
+console.log(table.getElementsByTagName('label'))
+// or
+document.querySelectorAll('#age-table label')
+
+// 3. The first td in that table (with the word "Age")
+console.log(table.rows[0].cells[0])
+// or
+table.getElementsByTagName('td')[0]
+// or
+table.querySelector('td')
+
+// 4. The form with the name "search"
+// assuming there's only one element with name="search" in the document
+let form = document.getElementsByName('search')[0]
+console.log(form)
+// or, form specifically
+document.querySelector('form[name="search"]')
+
+// 5. The first input in that form.
+console.log(form.getElementsByTagName('input')[0])
+// or
+form.querySelector('input')
+
+// 6. The last input in that form
+
+console.log(form.getElementsByTagName('input')[1])
   </script>
+</body>
+</html>
