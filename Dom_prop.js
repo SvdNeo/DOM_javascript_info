@@ -11,3 +11,11 @@
 console.log(document.body.firstElementChild)
 console.log(document.body.children[1])
 console.log(document.body.lastElementChild.previousElementSibling.lastElementChild.innerHTML)
+
+//task Tag in comment
+
+  let body = document.body;
+
+  body.innerHTML = "<!--" + body.tagName + "-->";
+
+  alert( body.firstChild.data ); // "BODY"
