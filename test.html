@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Script Loading</title>
+</head>
+<body>
+
+  <script>
+    // Function to dynamically load a script
+    function loadScript(src, callback) {
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = "test.js";
+
+      // Set up a callback function to execute after the script loads
+      script.onload = callback;
+
+      // Append the script element to the document body
+      document.body.appendChild(script);
+    }
+
+    // Usage: Load "Dom_prop.js" dynamically
+    loadScript('Dom_prop.js', function() {
+      // The script has loaded, you can now use its functionalities
+      console.log('Script loaded!');
+      // You can call functions or perform other operations from "Dom_prop.js" here
+    });
+  </script>
+
+</body>
+</html>
