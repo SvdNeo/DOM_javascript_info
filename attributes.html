@@ -1,0 +1,12 @@
+<div>Hello, world!</div>
+
+<script>
+  let div = document.querySelector('div');
+
+  // replace div.outerHTML with <p>...</p>
+  //div.outerHTML = '<p>A new element</p>'; // (*)
+  div.innerHTML = '<p>Hi this is element</p>';
+  // Wow! 'div' is still the same!
+  //alert(div.outerHTML); // <div>Hello, world!</div> (**)
+  alert(div.innerHTML)
+</script>
