@@ -1,5 +1,16 @@
-<div>Hello, world!</div>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>Hello, world!</div>
+<div id="elem1"></div>
+<div id="elem2"></div>
+<div id="elem">JavaScript assigned the property "hidden"</div>
+<div >With the attribute "hidden"</div>
 <script>
   let div = document.querySelector('div');
 
@@ -9,4 +20,28 @@
   // Wow! 'div' is still the same!
   //alert(div.outerHTML); // <div>Hello, world!</div> (**)
   alert(div.innerHTML)
+
+  let name = prompt("What's your name?", "<b>Winnie-the-Pooh!</b>");
+
+elem1.innerHTML = name;
+elem2.textContent = name;
+let elem = document.getElementById('elem');
+  let toggleInterval;
+
+  function toggleVisibility() {
+    elem.hidden = !elem.hidden;
+  }
+
+  // SetInterval to call the function every 3 seconds
+  toggleInterval = setInterval(toggleVisibility, 3000);
+
+  // Stop the interval after 15 seconds (5 iterations)
+  setTimeout(() => {
+    clearInterval(toggleInterval);
+  }, 15000);
+
+
+
 </script>
+</body>
+</html>
