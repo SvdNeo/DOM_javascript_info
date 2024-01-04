@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ol id="ol">
+        <li>0</li>
+        <li>1</li>
+        <li>2</li>
+      </ol>
+      <script>
+        ol.before("before")
+        ol.after("after")
+        let first=document.createElement("li");
+        first.innerHTML = 'prepend'
+        ol.prepend(first)
+        let last=document.createElement("li");
+        last.innerHTML = 'append'
+        ol.append(last)
+      </script>
+</body>
+</html>
