@@ -23,7 +23,8 @@
     <li>Hello</li>
     <li>World</li>
   </ol>
-
+<h1>Create list</h1>
+<div id="treeContainer"></div>
     <script>
      // ol.before("before");
       //ol.after("after");
@@ -59,6 +60,62 @@ function clear(elem1) {
 elem1.innerHTML = ""
 }
 clear(elem1)
+//task4
+let ul = document.createElement("ul")
+document.body.append(ul)
+while(true){
+    let input = prompt("Enter a item name")
+    if(input == null || input.trim()== ""){
+        break;
+    }
+    let li = document.createElement("li");
+    li.textContent = input
+    ul.append(li)
+}
+//task 5
+function createTree(data, container) {
+  const ulEle = document.createElement("ul");
+
+  for (let key in data) {
+    const liEle1 = document.createElement("li");
+    liEle1.textContent = key;
+
+    if (Object.keys(data[key]).length > 0) {
+      // Recursively create nested ul/li for child objects
+      createTree(data[key], liEle1);
+    }
+
+    ulEle.appendChild(liEle1);
+  }
+
+  container.appendChild(ulEle);
+}
+
+// Example data
+let data = {
+  "Fish": {
+    "trout": {},
+    "salmon": {}
+  },
+  "Tree": {
+    "Huge": {
+      "sequoia": {},
+      "oak": {}
+    },
+    "Flowering": {
+      "apple tree": {},
+      "magnolia": {}
+    }
+  }
+};
+
+// Create the tree structure in the container element (e.g., a div with id "treeContainer")
+const containerElement = document.getElementById("treeContainer");
+
+// Call the createTree function
+createTree(data, containerElement);
+
+
     </script>
   </body>
 </html>
