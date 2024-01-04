@@ -11,6 +11,18 @@
 <div id="elem2"></div>
 <div id="elem">JavaScript assigned the property "hidden"</div>
 <div >With the attribute "hidden"</div>
+<div id="elem" about="Elephant"></div>
+<div data-widget-name="menu">Choose the genre</div>
+<a name="list">the list</a>
+<ul>
+  <li><a href="http://google.com">http://google.com</a></li>
+  <li><a href="/tutorial">/tutorial.html</a></li>
+  <li><a href="local/path">local/path</a></li>
+  <li><a href="ftp://ftp.com/my.zip">ftp://ftp.com/my.zip</a></li>
+  <li><a href="http://nodejs.org">http://nodejs.org</a></li>
+  <li><a href="http://internal.com/test">http://internal.com/test</a></li>
+</ul>
+
 <script>
   let div = document.querySelector('div');
 
@@ -39,8 +51,28 @@ let elem = document.getElementById('elem');
   setTimeout(() => {
     clearInterval(toggleInterval);
   }, 15000);
+let ele1 = document.getElementById("elem")
+alert(ele1.getAttribute('about'))
 
+elem.setAttribute('Test', 123); // (2), writing
 
+console.log( elem.outerHTML ); // (3), see if the attribute is in HTML (yes)
+
+for (let attr of elem.attributes) { // (4) list all
+  alert( `${attr.name} = ${attr.value}` );
+}
+//task 1 Get the attribute
+let ele = document.querySelectorAll('[data-widget-name]')
+ele.forEach(i=>alert(i.getAttribute('data-widget-name')))
+let links = document.querySelectorAll('ul a');
+links.forEach(link=>{ if (
+        link.href.includes('://') &&
+         !link.href.startsWith(location.origin) &&
+        !link.href.startsWith('http://internal.com')// Exclude relative links
+      ){
+  
+  link.style.color = 'orange';
+}})
 
 </script>
 </body>
