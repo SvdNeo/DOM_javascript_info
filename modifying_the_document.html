@@ -1,25 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <ol id="ol">
-        <li>0</li>
-        <li>1</li>
-        <li>2</li>
-      </ol>
-      <script>
-        ol.before("before")
-        ol.after("after")
-        let first=document.createElement("li");
-        first.innerHTML = 'prepend'
-        ol.prepend(first)
-        let last=document.createElement("li");
-        last.innerHTML = 'append'
-        ol.append(last)
-      </script>
-</body>
+      <li>0</li>
+      <li>1</li>
+      <li>2</li>
+    </ol>
+    <div id="div"></div>
+    <div id="first">First</div>
+<div id="second">Second</div>
+
+<div class="alert" id="div1">
+    <strong>Hi there!</strong> You've read an important message.
+  </div>
+  <div id="ele"></div>
+
+    <script>
+     // ol.before("before");
+      //ol.after("after");
+      let first = document.createElement("li");
+      first.innerHTML = "prepend";
+      ol.prepend(first);
+      let last = document.createElement("li");
+      last.innerHTML = "append";
+      ol.append(last);
+      // insertAdjacentHTML/Text/Element
+      div.insertAdjacentHTML("beforebegin", "<p>Hello</p>");
+      div.insertAdjacentHTML("afterend", "<p>Bye</p>");
+      //remove the node
+      let divi = document.createElement("div");
+      divi.class = "alert";
+      divi.innerHTML = "i am learning to delete the DOM node"
+      document.body.append(divi)
+      setTimeout(() => {
+        divi.remove()
+      }, 5000);
+      let div2 = div1.cloneNode(true); 
+      div2.querySelector('strong').innerHTML = 'Bye there!'; // change the clone
+
+div1.after(div2);
+
+//task 1
+//We have an empty DOM element elem and a string text.
+let elem = document.createElement("ele")
+elem.textContent = "text"
+document.body.append(elem)
+
+    </script>
+  </body>
 </html>
