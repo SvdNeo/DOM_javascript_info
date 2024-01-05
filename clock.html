@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clock</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="clock">
+      <span class="hour">hh</span>:<span class="mins">mm</span>:<span
+        class="secs"
+        >ss</span
+      >
+    </div>
+    <input type="button" onclick="clockStart()" value="Start" />
+    <input type="button" onclick="clockStop()" value="Stop" />
+    <script>
+      function update() {
+        let clock = document.getElementById("clock");
+        let date = new Date();
+        let hours = date.getHours();
+        if (hours < 10) hours = "0" + hours;
+        clock.children[0].innerHTML = hours;
+        let mins = date.getMinutes();
+        if (mins < 10) mins = "0" + mins;
+        clock.children[1].innerHTML = mins;
+        let secs = date.getSeconds();
+        if (secs < 10) secs = "0" + secs;
+        clock.children[2].innerHTML = secs;
+      }
+      let timer;
+      function clockStart() {
+        if (!timer) {
+          timer = setInterval(update, 1000);
+        }
+        update();
+      }
+      function clockStop() {
+        clearInterval(timer);
+        timer = null;
+      }
+    </script>
+  </body>
+</html>
