@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="main page y">
+    <p> Hi am visible</p>
+    <script>
+        // add a class
+        document.body.classList.add('article');
+        //document.body.classList.toggle('article');
+        document.body.classList.remove('main', 'page');
+        alert(document.body.className); // main page article
+        document.body.style.display = "none"; // hide
+
+setTimeout(() => document.body.style.display = "", 2000); 
+      </script>
+</body>
+</html>
