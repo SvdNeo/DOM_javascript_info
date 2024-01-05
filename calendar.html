@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar Generator</title>
+</head>
+<body>
+
+<div id="cal"></div>
+
+<script>
+function createCalendar(elem, year, month) {
+  // Create a new Date object for the first day of the month
+  const firstDay = new Date(year, month - 1, 1);
+
+  // Create a table element
+  const table = document.createElement('table');
+
+  // Create the header row with weekday names
+  const headerRow = document.createElement('tr');
+  const weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+  weekdays.forEach(weekday => {
+    const th = document.createElement('th');
+    th.textContent = weekday;
+    headerRow.appendChild(th);
+  });
+
+  table.appendChild(headerRow);
+
+  // Calculate the number of days in the month
+  const daysInMonth = new Date(year, month, 0).getDate();
+
+  // Calculate the day of the week for the first day of the month
+  const startDay = firstDay.getDay() === 0 ? 7 : firstDay.getDay();
+
+  // Create the calendar cells
+  let dayCount = 1;
+
+  for (let i = 0; i < 6; i++) {
+    const row = document.createElement('tr');
+
+    for (let j = 1; j <= 7; j++) {
+      const cell = document.createElement('td');
+
+      if (i === 0 && j < startDay) {
+        // Empty cell before the first day of the month
+        cell.textContent = '';
+      } else if (dayCount > daysInMonth) {
+        // Empty cell after the last day of the month
+        cell.textContent = '';
+      } else {
+        // Fill in the day number
+        cell.textContent = dayCount++;
+      }
+
+      row.appendChild(cell);
+    }
+
+    table.appendChild(row);
+  }
+
+  // Append the table to the specified element
+  elem.appendChild(table);
+}
+
+// Example usage:
+const calElement = document.getElementById('cal');
+createCalendar(calElement, 2024, 1);
+</script>
+
+</body>
+</html>
