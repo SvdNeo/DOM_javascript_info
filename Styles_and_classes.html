@@ -16,6 +16,37 @@
         document.body.style.display = "none"; // hide
 
 setTimeout(() => document.body.style.display = "", 2000); 
+document.body.style.background = 'red'; //set background to red
+
+setTimeout(() => document.body.style.removeProperty('background'), 3000);
+document.body.style.margin  = '100px'
+alert(document.body.style.margin )
+
+//task
+function showNotification(options){
+    let notification = document.createElement("div");
+    notification.className = "notification"
+    if(options.className){
+        notification.classList.add(options.className)
+    }
+    notification.style.top = 0 +'px'
+    notification.style.right = 0 +'px'
+    if(options.html){
+        notification.innerHTML = options.html
+    }
+    
+    document.body.append(notification)
+    setTimeout(() => {
+        notification.style.display = "none"
+    }, 1500);
+
+}
+showNotification({
+        top: 10,
+        right: 10,
+        html: "Hello!",
+        className: "welcome"
+    });
       </script>
 </body>
 </html>
