@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Content Example</title>
+    <style>
+        #existingElement {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="existingElement">
+        <p>This is an existing element.</p>
+    </div>
+
+    <script>
+        // Create a new paragraph element
+        var newParagraph = document.createElement('p');
+        newParagraph.textContent = 'This is a new paragraph element.';
+
+        // Insert the new paragraph before the existing element
+       // var existingElement = document.getElementById('existingElement');
+       // existingElement.parentNode.insertBefore(newParagraph, existingElement);
+        document.getElementById("existingElement").insertAdjacentHTML("beforeend",'This is a new paragraph element.')
+    </script>
+
+</body>
+</html>

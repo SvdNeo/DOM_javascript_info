@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handlers</title>
+</head>
+<body>
+    <div id="container"></div>
+    <button onclick="countRabbits()" value="Rabbit count"> Submit</button>
+    <input type="button" onclick="alert('Hello')  " value ='click'>
+    <button onclick="alert(this.textContent)">Submit</button>
+    <input type="button" id="button" onclick="sayThanks" value="Try">
+<button id="btn"> Hover/Click</button>
+<button id="elem">click me</button>
+    <script>
+        //obj.handleEvent(event) using class 
+        class Menu{
+            handleEvent(event){
+                switch(event.type){
+                    case 'mousedown': elem.innerHTML = "Mouse button Pressed";
+                    break;
+                    case "mouseup" : elem.innerHTML += " & released";
+                    break;
+                }
+            }
+
+        }
+        let menu  = new Menu()
+        
+  elem.addEventListener('mousedown', menu);
+  elem.addEventListener('mouseup', menu);
+
+        //addeventlisteners
+let btn = document.getElementById("btn")
+        function alert1(){
+            alert('button is clicked')
+        }
+        function changeBackground(){
+            btn.style.backgroundColor = "Blue"
+        }
+        function reverseBg(){
+            btn.style.backgroundColor = "white"
+        }
+        btn.addEventListener('click',alert1)
+        btn.addEventListener('mouseover',changeBackground)
+        btn.addEventListener('mouseout',reverseBg)
+//         function sayThanks() {
+//   alert("Thanks!");
+// }
+//click event
+document.getElementById("button").onclick = () =>alert('Thanks')
+function countRabbits() {
+    // Get the container element
+    let container = document.getElementById("container");
+
+    // Clear previous content
+    container.innerHTML = "";
+
+    // Loop through and display rabbit numbers
+    for (let i = 1; i <= 3; i++) {
+      // Create a new paragraph element
+      let paragraph = document.createElement("p");
+
+      // Set the text content of the paragraph
+      paragraph.textContent = "Rabbit number " + i;
+
+      // Append the paragraph to the container
+      container.appendChild(paragraph);
+    }
+  }
+    </script>
+</body>
+</html>
