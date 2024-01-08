@@ -9,6 +9,39 @@
           margin: 10px;
           border: 1px solid blue;
         }
+        form {
+  background-color: green;
+  position: relative;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  cursor: pointer;
+}
+
+div {
+  background-color: blue;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 100px;
+  height: 100px;
+}
+
+p {
+  background-color: red;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  margin: 0;
+}
+
+body {
+  line-height: 25px;
+  font-size: 16px;
+}
       </style>
 </head>
 <body>
@@ -22,5 +55,38 @@
 </p>
         </div>
     </form>
+    <form id="form">Form
+        <div>Div
+<p >P</p>
+    </div>
+    </form>
+    <body onclick="alert(`the bubbling doesn't reach here`)">
+        <button id="btn">Click me</button>
+      </body>
+    <script>
+let btn = document.getElementById("btn");
+function clicked(){
+alert("clicked")
+}
+function clicked1(){
+alert("clicked once again")
+}
+function stopPropagation(event){
+    event.stopPropagation()
+}
+btn.addEventListener("click",clicked);
+btn.addEventListener("click",clicked1);
+btn.removeEventListener("click",clicked1);
+btn.addEventListener("click",stopPropagation)
+
+
+        form.onclick = function(e){
+            e.target.style.backgroundColor = "yellow";
+            setTimeout(() => {
+                alert(`target = ${e.target.tagName},this = ${this.tagName}`)
+                e.target.style.backgroundColor = "";
+            }, 0);
+        }
+    </script>
 </body>
 </html>
