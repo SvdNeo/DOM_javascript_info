@@ -4,10 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event bubbling and capturing</title>
+    <style>
+        body * {
+          margin: 10px;
+          border: 1px solid blue;
+        }
+      </style>
 </head>
 <body>
     <div onclick="alert('thank u')">
     <em>This line is of great importance</em>
     </div>
+    <form onclick="alert('Form')">Form
+        <div onclick="alert('Div')">Div
+<p onclick="alert('P')">P
+
+</p>
+        </div>
+    </form>
 </body>
 </html>
