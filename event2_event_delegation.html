@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    .tree span:hover {
+      font-weight: bold;
+    }
+
+    .tree span {
+      cursor: pointer;
+    }
+
+    .tree ul {
+      display:"" ; /* Hide all child lists by default */
+    }
+
+    .tree ul.active {
+      display: none; /* Display child list when it has the 'active' class */
+    }
+  </style>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <ul class="tree" id="tree">
+    <li><span>Animals</span>
+      <ul>
+        <li><span>Mammals</span>
+          <ul>
+            <li>Cows</li>
+            <li>Donkeys</li>
+            <li>Dogs</li>
+            <li>Tigers</li>
+          </ul>
+        </li>
+        <li><span>Other</span>
+          <ul>
+            <li>Snakes</li>
+            <li>Birds</li>
+            <li>Lizards</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><span>Fishes</span>
+      <ul>
+        <li><span>Aquarium</span>
+          <ul>
+            <li>Guppy</li>
+            <li>Angelfish</li>
+          </ul>
+        </li>
+        <li><span>Sea</span>
+          <ul>
+            <li>Sea trout</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+<script>
+  document.getElementById('tree').addEventListener('click', function(event) {
+    // Check if the click is on a <span> element
+    if (event.target.tagName === 'SPAN') {
+      // Toggle the 'active' class on the next sibling <ul>
+      var childList = event.target.nextElementSibling;
+      if (childList) {
+        childList.classList.toggle('active');
+      }
+    }
+    // Prevent the click from doing anything outside the node title
+    //event.stopPropagation();
+  });
+</script>
+
+</body>
+</html>
