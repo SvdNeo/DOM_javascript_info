@@ -9,6 +9,8 @@
     <p>Right-click here for the document context menu</p>
 <button id="elem">Right-click here for the button context menu</button>
 
+<a href="https://w3.org" onclick="handler(event)">w3.org</a>
+
 <script>
   elem.oncontextmenu = function(event) {
     event.preventDefault();
@@ -19,6 +21,15 @@
     event.preventDefault();
     alert("Document context menu");
   };
+
+  //task 1
+  //by making use of event.preventDefault() we can prevent the working of the URL
+  function handler(event) {
+    alert("...");
+    event.preventDefault();
+  }
+
+
 </script>
 </body>
 </html>
