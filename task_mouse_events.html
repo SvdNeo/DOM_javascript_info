@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    .selected {
+      background: #0f0;
+    }
+
+    li {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  Click on a list item to select it.
+  <br>
+
+  <ul id="ul">
+    <li>Christopher Robin</li>
+    <li>Winnie-the-Pooh</li>
+    <li>Tigger</li>
+    <li>Kanga</li>
+    <li>Rabbit. Just rabbit.</li>
+  </ul>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var list = document.getElementById('ul');
+
+      list.addEventListener('click', function(event) {
+        var clickedElement = event.target;
+
+        // Check if the Ctrl (Cmd for Mac) key is pressed
+        var isCtrlPressed = event.ctrlKey || event.metaKey;
+
+        // Deselect all elements if Ctrl key is not pressed
+        if (!isCtrlPressed) {
+          deselectAll();
+        }
+
+        // Toggle selection for the clicked element
+        toggleSelection(clickedElement);
+      });
+
+      function deselectAll() {
+        var items = list.getElementsByTagName('li');
+        for (var i = 0; i < items.length; i++) {
+          items[i].classList.remove('selected');
+        }
+      }
+
+      function toggleSelection(element) {
+        element.classList.toggle('selected');
+      }
+    });
+  </script>
