@@ -13,6 +13,11 @@
     <li>Item 4</li>
   </ul>
   <p ondblclick="alert('clicked')" onmousedown="return false">Double click me</p>
+  <div oncopy="alert('Copying forbidden!');return false">
+    Dear user,
+    The copying is forbidden for you.
+    If you know JS or HTML, then you can get everything from the page source though.
+  </div>
   <script>
     // Attach a single event listener to the parent ul element
     document.getElementById('itemList').addEventListener('click', function(event) {
@@ -22,7 +27,7 @@
         console.log('Clicked on:', event.target.textContent);
       }
     });
- 
+
 
   </script>
 </body>
