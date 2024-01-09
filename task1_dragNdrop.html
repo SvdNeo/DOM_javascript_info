@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    #slider {
+      width: 300px;
+      height: 10px;
+      background-color: #ddd;
+      position: relative;
+      cursor: pointer;
+    }
+
+    #thumb {
+        width: 10px;
+  height: 25px;
+  border-radius: 3px;
+  position: relative;
+  left: 10px;
+  top: -5px;
+  background: blue;
+  cursor: pointer;
+    }
+  </style>
+  <title>Slider</title>
+</head>
+<body>
+
+  <div id="slider">
+    <div id="thumb"></div>
+  </div>
+
+  <script>
+    const slider = document.getElementById('slider');
+    const thumb = document.getElementById('thumb');
+    let isDragging = false;
+
+    thumb.addEventListener('mousedown', (event) => {
+      isDragging = true;
+      slider.style.cursor = 'grabbing';
+      handleDrag(event);
+    });
+
+    document.addEventListener('mousemove', handleDrag);
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      slider.style.cursor = 'pointer';
+    });
+
+    function handleDrag(event) {
+      if (!isDragging) return;
+
+      const sliderRect = slider.getBoundingClientRect();
+      let newX = event.clientX - sliderRect.left;
+
+      // Ensure the thumb stays within the slider bounds
+      newX = Math.max(0, Math.min(newX, sliderRect.width));
+
+      // Update the thumb position
+      thumb.style.left = newX - thumb.offsetWidth / 2 + 'px';
+    }
+  </script>
+
+</body>
+</html>

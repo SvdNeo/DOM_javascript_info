@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .clock {
+      font-size: 24px;
+      position: relative;
+      display: inline-block;
+    }
+
+    #tooltip {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 5px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      display: none;
+    }
+  </style>
+  <title>HoverIntent Tooltip</title>
+</head>
+<body>
+
+  <div id="elem" class="clock">
+    <span class="hours">12</span> :
+    <span class="minutes">30</span> :
+    <span class="seconds">00</span>
+  </div>
+
+  <div id="tooltip" hidden>Tooltip</div>
+
+  <script>
+    function HoverIntent(options) {
+      this.target = options.target;
+      this.tooltip = options.tooltip;
+      this.hoverTimeout = null;
+
+      this.handleMouseover = function () {
+        this.showTooltip();
+      };
+
+      this.handleMouseout = function () {
+        this.hideTooltip();
+      };
+
+      this.showTooltip = function () {
+        this.tooltip.style.display = 'block';
+      };
+
+      this.hideTooltip = function () {
+        this.tooltip.style.display = 'none';
+      };
+
+      this.init = function () {
+        this.target.addEventListener('mouseover', this.handleMouseover.bind(this));
+        this.target.addEventListener('mouseout', this.handleMouseout.bind(this));
+      };
+
+      this.init();
+    }
+
+    // Usage
+    const hoverIntentOptions = {
+      target: document.getElementById('elem'),
+      tooltip: document.getElementById('tooltip'),
+    };
+
+    const hoverIntent = new HoverIntent(hoverIntentOptions);
+  </script>
+
+</body>
+</html>
