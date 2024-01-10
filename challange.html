@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkbox Control</title>
+</head>
+<body>
+
+  <input type="checkbox" id="myCheckbox" disabled>
+  <label for="myCheckbox">Enable and Check Checkbox</label>
+
+  <button id="enableAndCheckButton">Enable and Check</button>
+
+  <script>
+    document.getElementById('enableAndCheckButton').addEventListener('click', function() {
+      // Enable the checkbox
+      document.getElementById('myCheckbox').disabled = false;
+      
+      // Check the checkbox
+      document.getElementById('myCheckbox').checked = true;
+    });
+  </script>
+
+</body>
+</html>
+
