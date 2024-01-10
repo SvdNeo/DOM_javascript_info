@@ -14,7 +14,22 @@
         <input type="radio" name="age" value="10">
         <input type="radio" name="age" value="20">
       </form>
+      <form id="form">
+        <input type="text" name="login">
+      </form>
+      <!-- <select id="select">
+        <option value="apple">Apple</option>
+        <option value="pear">Pear</option>
+        <option value="banana">Banana</option>
+      </select> -->
+      <select id="select" multiple>
+        <option value="blues" selected>Blues</option>
+        <option value="rock" selected>Rock</option>
+        <option value="classic">Classic</option>
+      </select>
       <script>
+        let selected = Array.from(select.options).filter(select=>select.selected).map(select=>select.value);
+        console.log(selected)
         // get the form
         // let form = document.forms.my; // <form name="my"> element
       
@@ -28,6 +43,18 @@
 let ageElem = form1.elements.age;
 
 alert(ageElem[1].value);
-      </script>
+
+
+
+  // form -> element
+  let login = form.login;
+
+  // element -> form
+  console.log(login.form); // HTMLFormElement
+  //select.selectedIndex = 2
+  //select.options[1].selected = true
+  select.value = "Pear"
+</script>
+      
 </body>
 </html>
