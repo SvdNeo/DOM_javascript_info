@@ -17,17 +17,30 @@
       <form id="form">
         <input type="text" name="login">
       </form>
-      <!-- <select id="select">
+      <select id="select">
         <option value="apple">Apple</option>
         <option value="pear">Pear</option>
         <option value="banana">Banana</option>
-      </select> -->
-      <select id="select" multiple>
+      </select>
+      <!-- <select id="select" multiple>
         <option value="blues" selected>Blues</option>
         <option value="rock" selected>Rock</option>
         <option value="classic">Classic</option>
+      </select> -->
+      <!-- task1 -->
+      <select id="genres">
+        <option value="rock">Rock</option>
+        <option value="blues" selected>Blues</option>
       </select>
+    
       <script>
+       let genre = document.getElementById("genres");
+            let newOption = new Option("Classic","classic",true,true)
+            genre.append(newOption)
+            let selectedOption = genres.options[genres.selectedIndex];
+  alert( selectedOption.value );
+        
+
         let selected = Array.from(select.options).filter(select=>select.selected).map(select=>select.value);
         console.log(selected)
         // get the form
