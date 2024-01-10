@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .error {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+
+    Enter emailId: <input type="email" id="mail">
+    Enter valid text: <input type="text" id="text">
+
+    <script>
+        // Get the reference to the input element with id 'mail'
+        var mailInput = document.getElementById('mail');
+
+        // Attach an onblur event handler to the 'mail' input
+        mailInput.onblur = function () {
+            if (!this.value.includes('@')) {
+                this.classList.add('error');
+                mailInput.focus()
+            } else {
+                this.classList.remove('error');
+            }
+        }
+    </script>
+
+</body>
+</html>
