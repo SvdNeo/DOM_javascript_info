@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            height: 100vh;
+            background-color: #f4f4f4;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #modal-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        #prompt-message {
+            margin-bottom: 10px;
+        }
+
+        #input-field {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        #buttons-container {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        button {
+            margin-left: 10px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <p>Click the button below:</p>
+
+    <button id="clickMeButton">Click Me</button>
+
+    <script>
+        var clickMeButton = document.getElementById('clickMeButton');
+
+        clickMeButton.addEventListener('click', function() {
+            showPrompt('Enter something<br>...smart :)', function(value) { alert(value); });
+        });
+
+        // Function to show the modal
+        function showPrompt(html, callback) {
+            // Create modal container if it doesn't exist
+            var modalContainer = document.getElementById('modal-container');
+
+            if (!modalContainer) {
+                modalContainer = document.createElement('div');
+                modalContainer.id = 'modal-container';
+
+                // Create form content
+                modalContainer.innerHTML = `
+                    <div id="prompt-message">${html}</div>
+                    <input type="text" id="input-field">
+                    <div id="buttons-container">
+                        <button onclick="onOkClick()">OK</button>
+                        <button onclick="onCancelClick()">CANCEL</button>
+                    </div>
+                `;
+
+                // Append modal container to the body
+                document.body.appendChild(modalContainer);
+
+                // Get input field and set focus
+                var inputField = document.getElementById('input-field');
+                inputField.focus();
+
+                // Handle Enter key press
+                inputField.addEventListener('keyup', function (event) {
+                    if (event.key === 'Enter') {
+                        onOkClick();
+                    }
+                });
+
+                // Handle Tab/Shift+Tab key press to navigate between form fields
+                modalContainer.addEventListener('keydown', function (event) {
+                    if (event.key === 'Tab') {
+                        event.preventDefault();
+                        inputField.focus();
+                    } else if (event.key === 'Escape') {
+                        onCancelClick();
+                    }
+                });
+
+                // Function to handle OK button click
+                window.onOkClick = function () {
+                    var value = inputField.value;
+                    closeModal();
+                    callback(value);
+                };
+
+                // Function to handle CANCEL button click
+                window.onCancelClick = function () {
+                    closeModal();
+                    callback(null);
+                };
+
+                // Function to close the modal
+                function closeModal() {
+                    document.body.removeChild(modalContainer);
+                }
+            } else {
+                // If the modal container already exists, just toggle its visibility
+                toggleInput();
+            }
+        }
+
+        // Function to toggle the visibility of the modal
+        function toggleInput() {
+            var modalContainer = document.getElementById('modal-container');
+            var computedStyle = window.getComputedStyle(modalContainer);
+
+            // Toggle the display property
+            modalContainer.style.display = computedStyle.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>
