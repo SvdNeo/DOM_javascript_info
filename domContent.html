@@ -9,7 +9,9 @@
 <body>
     <img id="img" src="https://en.js.cx/clipart/train.gif?speed=1&cache=0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.3.0/lodash.js"></script>
-    
+    <iframe src="iframe.html" onload="console.log('iframe onload')"></iframe>
+
+<img src="https://en.js.cx/clipart/train.gif" id="img">
     <script>
         function ready(){
             alert('DOM is loaded')
@@ -21,6 +23,22 @@
 
 
   alert("Library loaded, inline script executed");
+  window.onload = function(){
+    alert('Page is loaded')
+            alert(`Image size: ${img.offsetWidth}x${img.offsetHeight}`);
+  }
+  // current state
+//console.log(document.readyState);
+
+// print state changes
+//document.addEventListener('readystatechange', () => console.log(document.readyState));
+console.log('initial readyState:' + document.readyState);
+
+document.addEventListener('readystatechange', () => console.log('readyState:' + document.readyState));
+document.addEventListener('DOMContentLoaded', () => console.log('DOMContentLoaded'));
+img.onload = () => console.log('img onload');
+window.onload = () => console.log('window onload');
+
 
        
     </script>
