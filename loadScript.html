@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LoadScript</title>
+  </head>
+  <body>
+    <script>
+   let script = document.createElement('script');
+
+// can load any script, from any domain
+script.src = "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.3.0/lodash.js"
+document.head.append(script);
+
+script.onload = function() {
+  // the script creates a variable "_"
+  alert(`${script.src}` ); // shows library version
+};
+let img = document.createElement("img");
+img.src = "https://js.cx/clipart/train.gif";
+img.onload = function(){
+    alert(`Image size : ${img.width} x ${img.height}`)
+}
+img.onerror = function(){
+    alert("Error occurred")
+}
+    </script>
+  </body>
+</html>
