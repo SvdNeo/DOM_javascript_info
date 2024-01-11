@@ -4,15 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
 </head>
 <body>
     <img id="img" src="https://en.js.cx/clipart/train.gif?speed=1&cache=0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.3.0/lodash.js"></script>
+    
     <script>
         function ready(){
             alert('DOM is loaded')
             alert(`Image size: ${img.offsetWidth}x${img.offsetHeight}`);
         }
         document.addEventListener('DOMContentLoaded',ready)
+        alert(getComputedStyle(document.body).marginTop);
+
+
+
+  alert("Library loaded, inline script executed");
+
        
     </script>
 </body>
