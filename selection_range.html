@@ -7,6 +7,9 @@
 </head>
 <body>
     <p id="p">Hello</p>
+    <h1 id="h1">Example: <i>italic</i> and <b>bold</b></h1>
+    From <input id="start" type="number" value=1> – To <input id="end" type="number" value=4>
+<button id="button">Click to select</button>
 <script>
   let range = new Range();
   range.setStart(p.firstChild, 2);
@@ -14,6 +17,17 @@
 
   // toString of a range returns its content as text
   console.log(range); // ll
+  //demo 2
+  button.onclick = () => {
+    let range1 = new Range();
+
+    range1.setStart(h1, start.value);
+    range1.setEnd(h1, end.value);
+
+    // apply the selection, explained later below
+    document.getSelection().removeAllRanges();
+    document.getSelection().addRange(range1);
+  };
 </script>
 </body>
 </html>
