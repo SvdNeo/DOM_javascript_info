@@ -86,7 +86,7 @@
         <div id="tasksContainer"></div>
     </div>
     <script>
-        var taskIdCounter = 1; // Counter for numbering tasks
+        var taskIdCounter = 1;
 
         function addTask() {
             var newTaskInput = document.getElementById('newTask');
@@ -99,11 +99,9 @@
 
             var tasksContainer = document.getElementById('tasksContainer');
 
-            // Create task element
             var taskElement = document.createElement('div');
             taskElement.className = 'task';
 
-            // Create task input
             var taskInput = document.createElement('input');
             taskInput.type = 'text';
             taskInput.value = taskText;
@@ -112,15 +110,13 @@
                 updateTask(taskElement, taskInput);
             });
 
-            // Create edit button
             var editButton = document.createElement('button');
             editButton.textContent = 'Edit';
             editButton.className = 'editButton';
             editButton.addEventListener('click', function () {
-                editTask(taskElement, taskInput);
+                editTask(taskElement, taskInput, editButton);
             });
 
-            // Create delete button
             var deleteButton = document.createElement('button');
             deleteButton.textContent = 'Delete';
             deleteButton.className = 'deleteButton';
@@ -128,21 +124,17 @@
                 deleteTask(taskElement);
             });
 
-            // Append input and buttons to task element
             taskElement.appendChild(taskInput);
             taskElement.appendChild(editButton);
             taskElement.appendChild(deleteButton);
 
-            // Assign task ID and add to the container
             taskElement.id = 'task' + taskIdCounter++;
             tasksContainer.appendChild(taskElement);
 
-            // Clear the new task input
             newTaskInput.value = '';
         }
 
         function updateTask(taskElement, taskInput) {
-            // Update the task text when the input changes
             var newText = taskInput.value.trim();
             if (newText === '') {
                 alert('Task cannot be empty.');
@@ -152,25 +144,26 @@
             }
         }
 
-        function editTask(taskElement, taskInput) {
-            // Toggle between "Edit" and "Update" buttons
-            var editButton = taskElement.querySelector('.editButton');
+        function editTask(taskElement, taskInput, editButton) {
             var updateButton = document.createElement('button');
             updateButton.textContent = 'Update';
             updateButton.className = 'updateButton';
             updateButton.addEventListener('click', function () {
                 taskInput.readOnly = true;
-                editButton.replaceWith(updateButton);
+                editButton.style.display = 'inline-block';
+                updateButton.style.display = 'none';
             });
 
             taskInput.readOnly = false;
             taskInput.focus();
 
-            editButton.replaceWith(updateButton);
+            editButton.style.display = 'none';
+            updateButton.style.display = 'inline-block';
+
+            taskElement.appendChild(updateButton);
         }
 
         function deleteTask(taskElement) {
-            // Remove the task element from the DOM
             taskElement.parentNode.removeChild(taskElement);
         }
     </script>
