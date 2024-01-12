@@ -6,17 +6,22 @@
     <title>Document</title>
 </head>
 <body>
-    <p id="p">Hello</p>
+    <p id="p1">Hello</p>
     <h1 id="h1">Example: <i>italic</i> and <b>bold</b></h1>
     From <input id="start" type="number" value=1> – To <input id="end" type="number" value=4>
 <button id="button">Click to select</button>
+Click buttons to run methods on the selection, "resetExample" to reset it.
+
+<p id="p">Example: <i>italic</i> and <b>bold</b></p>
+
+<p id="result"></p>
 <script>
-  let range = new Range();
-  range.setStart(p.firstChild, 2);
-  range.setEnd(p.firstChild, 4);
+  let range2 = new Range();
+  range2.setStart(p1.firstChild, 2);
+  range2.setEnd(p1.firstChild, 4);
 
   // toString of a range returns its content as text
-  console.log(range); // ll
+  console.log(range2); // ll
   //demo 2
   button.onclick = () => {
     let range1 = new Range();
@@ -28,6 +33,53 @@
     document.getSelection().removeAllRanges();
     document.getSelection().addRange(range1);
   };
+
+  //demo 3
+  let range = new Range();
+
+  // Each demonstrated method is represented here:
+  let methods = {
+    deleteContents() {
+      range.deleteContents()
+    },
+    extractContents() {
+      let content = range.extractContents();
+      result.innerHTML = "";
+      result.append("extracted: ", content);
+    },
+    cloneContents() {
+      let content = range.cloneContents();
+      result.innerHTML = "";
+      result.append("cloned: ", content);
+    },
+    insertNode() {
+      let newNode = document.createElement('u');
+      newNode.innerHTML = "NEW NODE";
+      range.insertNode(newNode);
+    },
+    surroundContents() {
+      let newNode = document.createElement('u');
+      try {
+        range.surroundContents(newNode);
+      } catch(e) { console.log(e) }
+    },
+    resetExample() {
+      p.innerHTML = `Example: <i>italic</i> and <b>bold</b>`;
+      result.innerHTML = "";
+
+      range.setStart(p.firstChild, 2);
+      range.setEnd(p.querySelector('b').firstChild, 3);
+
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+    }
+  };
+
+  for(let method in methods) {
+    document.write(`<div><button onclick="methods.${method}()">${method}</button></div>`);
+  }
+
+  methods.resetExample();
 </script>
 </body>
 </html>
