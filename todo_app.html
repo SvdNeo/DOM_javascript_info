@@ -4,6 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do app</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #todoList {
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        #tasksContainer {
+            margin-top: 10px;
+        }
+
+        .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            border: 1px solid #ccc;
+            margin-bottom: 8px;
+        }
+
+        .task input[type="text"] {
+            flex-grow: 1;
+            margin-right: 8px;
+            padding: 4px;
+        }
+
+        .task button {
+            border: none;
+            padding: 6px 10px;
+            cursor: pointer;
+        }
+
+        .editButton {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .updateButton {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .deleteButton {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        #newTaskContainer {
+            display: flex;
+            align-items: center;
+        }
+
+        #newTask {
+            flex-grow: 1;
+            margin-right: 8px;
+            padding: 4px;
+        }
+
+        #addButton {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div id="todoList">
