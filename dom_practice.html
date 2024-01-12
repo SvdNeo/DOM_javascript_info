@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="h1">New Heading</h1>
+    <input type="button" value="click Me" id="btn">
+   
+    <script>
+document.getElementById("h1").innerHTML = "Changed Heading"
+document.getElementsByTagName("h1")[0].innerHTML = "Tag Heading"
+        let btn = document.getElementById("btn")
+        btn.addEventListener('click',()=>{
+          
+            
+            document.body.append(document.createElement("p").textContent =  "Hi am a new paragraph")
+        })
+        function add(a,b){
+            return a+b
+        }
+        const res = add(24589,4789);
+        const para = document.createElement("p")
+        para.innerHTML = ` The result is : ${res}`
+        document.body.append(para)
+        h1.remove()
+    </script>
+</body>
+</html>
